@@ -1,4 +1,4 @@
-import spinner from "./assets/spinner.gif";
+import spinner from "./Assets/spinner.gif";
 
 function Spinner() {
   return (
