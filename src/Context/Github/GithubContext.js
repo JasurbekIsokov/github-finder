@@ -35,7 +35,7 @@ export const GithubProvider = ({ children }) => {
   const getUser = async (login) => {
     setLoading();
 
-    const responce = await fetch(`${GITHUB_URL}/users/${loading}`);
+    const responce = await fetch(`${GITHUB_URL}/users/${login}`);
 
     if (responce.status === 404) {
       window.location = "/notfound";
