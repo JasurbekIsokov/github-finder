@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Layout/Navbar";
 import Footer from "./Components/Layout/Footer";
-import About from "./Pages/About";
 import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Alert from "./Components/Alert";
 import NotFound from "./Pages/NotFound";
 import { GithubProvider } from "./Context/Github/GithubContext";
 import { AlertProvider } from "./Context/Alert/AlertContext";
@@ -15,8 +16,8 @@ function App() {
         <Router>
           <div className="flex flex-col justify-between h-screen">
             <Navbar />
-
             <main className="container mx-auto px-3 pb-12">
+              <Alert />
               <Routes>
                 <Route
                   path="/"
