@@ -47,6 +47,22 @@ export const GithubProvider = ({ children }) => {
     }
   };
 
+  // Get single user Repos
+  const getRepos = async (login) => {
+    setLoading();
+
+    const responce = await fetch(`${GITHUB_URL}/users/${login}/repos`);
+    if (responce.status === 404) {
+      window.location = "/notfound";
+    } else {
+      const data = await responce.json();
+      dispatch({
+        type: "GET_USER_REPOS",
+        payload: data,
+      });
+    }
+  };
+
   // Clear users from state
   const clearUsers = () => dispatch({ type: "CLEAR_USERS" });
 
@@ -58,10 +74,12 @@ export const GithubProvider = ({ children }) => {
       value={{
         users: state.users,
         user: state.user,
+        repos: state.repos,
         loading: state.loading,
         searchUsers,
         clearUsers,
         getUser,
+        getRepos,
       }}
     >
       {children}
